@@ -1,6 +1,5 @@
 body {
-    margin: 0px auto;
-    padding: 0px;
+    margin: 0 auto;
     box-sizing: border-box;
     font-family: 'Rubik', Tahoma, sans-serif;
     min-width: 600px;
@@ -849,6 +848,317 @@ section#parcours_achat section#partie_droite section#bloc_personnalisation form 
     background-color: #94c5fd;
 }
 
+/****Formulaire de connexion ****/
+
+* {
+    box-sizing: border-box;
+    outline: none !important;
+    text-decoration: none !important;
+}
+
+section.login-form {
+    height: 100vh;
+    background-color: red;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    margin-top: 60px;
+}
+
+section.login-form .box {
+    min-width: 400px;
+    min-height: 450px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px #cccccc;
+    border-radius: 5%;
+    margin: 15px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+section.login-form .box .img i {
+    width: 60px;
+    display: block;
+    margin: auto;
+}
+
+section.login-form .box .titre h2 {
+    color: #0089fe;
+    font-size: 22px;
+    text-align: left;
+    margin: 15px 0px 20px;
+    border-bottom: 1px solid;
+    padding-bottom: 3px;
+    display: inline-block;
+}
+
+section.login-form .box .form-email {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+section.login-form .box .form-email .input-box {
+    position: relative;
+    margin-bottom: 20px;
+    width: 100%;
+}
+section.login-form .box .form-email .input-box .form-control {
+    height: 40px;
+    width: 100%;
+    padding: 0px 0px 0px 45px;
+    color: #444444;
+    border: 1px solid;
+    background-color: rgb(232, 240, 254) !important;
+}
+
+section.login-form .box .form-email .input-box .form-control::placeholder {
+    color: #cccccc;
+}
+
+section.login-form .box .form-email .input-box span {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    height: 100%;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+section.login-form .box .form-email .input-box span i {
+    width: 22px;
+}
+
+section.login-form .box .form-email .bouton {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+section.login-form .box .form-email .inscription {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+
+section.login-form .box .form-email .bouton button {
+    color: #ffffff;
+    font-size: 16px;
+    padding: 15px 35px;
+    background-color: #0089fe;
+    transition: box-shadow 0.5s ease;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+section.login-form .box .form-email .inscription button {
+    color: #ffffff;
+    font-size: 16px;
+    padding: 15px 35px;
+    background-color: #48fe00;
+    transition: box-shadow 0.5s ease;
+    border: none;
+    cursor: pointer;
+    margin-top: 30px;
+    width: 70%;
+    text-align: center;
+}
+
+section.login-form .box .form-email .bouton button:hover {
+    box-shadow: 0px 0px 10px #cccccc;
+}
+section.login-form .box .form-email .bouton a {
+    font-size: 16px;
+    color: red;
+    margin: 10px;
+}
+
+section.login-form .box .form-email {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/****Fin du Formulaire de connexion ****/
+
+
+
+/**** Formulaire d'inscription ****/
+
+/* form Inscription */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+}
+
+.container {
+    max-width: 500px;
+    width: 100%;
+    background: #fff;
+    margin: 20px auto;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.125);
+    padding: 30px;
+    background-image: radial-gradient(
+            circle,
+            #22d879,
+            #00dd9d,
+            #00e0bd,
+            #00e2d7,
+            #12e3eb
+    );
+
+}
+
+.container .titre {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 25px;
+    color: #fec107;
+    text-transform: uppercase;
+    text-align: center;
+    margin: 10px 0 20px;
+    border-bottom: 1px solid;
+    padding-bottom: 3px;
+    display: inline-block;
+}
+
+.container .formulaire {
+    width: 100%;
+    margin-top: 30px;
+}
+
+.container .formulaire .inputChamp {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.container .formulaire .inputChamp label {
+    width: 200px;
+    color: #757575;
+    margin-right: 10px;
+    font-size: 14px;
+    text-align: justify;
+}
+.container .formulaire .inputChamp .label {
+    width: 200px;
+    color: #757575;
+    margin-right: 10px;
+    font-size: 14px;
+    text-align: center;
+}
+
+.container .formulaire .inputChamp .input,
+.container .formulaire .inputChamp .textarea {
+    width: 100%;
+    outline: none;
+    border: 1px solid #d5dbd9;
+    font-size: 15px;
+    padding: 8px 10px;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.container .formulaire .inputChamp .textarea {
+    width: 100%;
+    height: 125px;
+    resize: none;
+}
+
+.container .formulaire .inputChamp p {
+    font-size: 14px;
+    color: #757575;
+}
+.container .formulaire .inputChamp .check {
+    width: 15px;
+    height: 15px;
+    position: relative;
+    display: block;
+    cursor: pointer;
+}
+.container .formulaire .inputChamp .check input[type="checkbox"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
+.container .formulaire .inputChamp .check .verification {
+    width: 15px;
+    height: 15px;
+    border: 1px solid #fec107;
+    display: block;
+    position: relative;
+}
+.container .formulaire .inputChamp .check .verification:before {
+    content: "";
+    position: absolute;
+    top: 1px;
+    left: 2px;
+    width: 5px;
+    height: 2px;
+    border: 2px solid;
+    border-color: transparent transparent #fff #fff;
+    transform: rotate(-45deg);
+    display: none;
+}
+.container .formulaire .inputChamp .check input[type="checkbox"]:checked ~ .verification {
+    background: #fec107;
+}
+
+.container .formulaire .inputChamp .check input[type="checkbox"]:checked ~ .verification:before {
+    display: block;
+}
+
+.container .formulaire .inputChamp .btn {
+    width: 100%;
+    padding: 8px 10px;
+    font-size: 15px;
+    border: 0px;
+    background: #fec107;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 3px;
+    outline: none;
+}
+
+.container .formulaire .inputChamp .btn:hover {
+    background: #ffd658;
+}
+
+.container .formulaire .inputChamp:last-child {
+    margin-bottom: 0;
+}
+
+@media (max-width: 320px) {
+    .container .formulaire .inputChamp {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .container .formulaire .inputChamp label {
+        margin-bottom: 5px;
+    }
+    .container .formulaire .inputChamp.terme {
+        flex-direction: row;
+    }
+}
+
+
+
+/**** Fin du Formulaire d'inscription ****/
+
+
+
+
 /****MEDIA QUERIES - A LAISSER EN BAS ****/
 
 /*Si plus de 650px de large */
@@ -878,5 +1188,16 @@ section#parcours_achat section#partie_droite section#bloc_personnalisation form 
         margin-top: 290px;
     }
 }
+/*** Media queries du formulaire de connexion   ***/
+@media (max-width: 500px) {
+    section.login-form .box {
+        min-width: 100%;
+        padding: 30px;
+    }
+    section.login-form .box form {
+        min-width: 100%;
+    }
+}
+
 
 /****FIN MEDIA QUERIES****/

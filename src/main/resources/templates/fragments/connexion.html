@@ -1,4 +1,4 @@
-<section class="login-form">
+<section class="login-form"  xmlns:th="http://www.thymeleaf.org">
     <form action="" method="POST">
         <div class="box">
             <div class="img">
@@ -21,7 +21,7 @@
                     <a href="#">Mot de passe oublié</a>
                 </div>
                 <div class="inscription">
-                    <button type="submit"> <a href="./formulaireInscription.html"> Créer un compte</a> </button>
+                    <button type="submit"> <a th:href="@{/inscription}"> Créer un compte</a> </button>
                 </div>
             </div>
         </div>

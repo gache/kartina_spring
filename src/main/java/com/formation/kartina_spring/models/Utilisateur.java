@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +20,10 @@ import java.util.List;
 public class Utilisateur {
 
     @Id
-    @Column(nullable = false)
+    @Email
+    @NotNull
+    @NotBlank
+    @Pattern(regexp = "^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\\\.[A-Z]{2,155}$", flags = {Pattern.Flag.CASE_INSENSITIVE, Pattern.Flag.DOTALL})
     private String email;
 
     @Column(length = 10, nullable = false)
@@ -33,6 +38,7 @@ public class Utilisateur {
     private String prenom;
 
     @Column(length = 16, nullable = false)
+    @Pattern(regexp = "\"(0|(\\\\+33)|(0033))[1-9][0-9]{8}\"", flags = {Pattern.Flag.CASE_INSENSITIVE, Pattern.Flag.DOTALL})
     private String telephone;
 
     @Transient
