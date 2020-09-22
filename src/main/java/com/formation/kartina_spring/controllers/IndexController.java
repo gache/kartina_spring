@@ -2,6 +2,7 @@ package com.formation.kartina_spring.controllers;
 
 
 import com.formation.kartina_spring.enums.RoleUtilisateur;
+import com.formation.kartina_spring.models.Adresse;
 import com.formation.kartina_spring.models.UserType;
 import com.formation.kartina_spring.models.Utilisateur;
 import com.formation.kartina_spring.services.UserTypeService;
@@ -76,7 +77,7 @@ public class IndexController {
     }
 
     @PostMapping("/inscription")
-    public String postInscription(Model model,
+    public String postInscription(Model model, Adresse adresse,
                                   @Valid @ModelAttribute(name = "utilisateur") Utilisateur utilisateur,
                                   BindingResult utilisateurBinding
     ) {
@@ -96,7 +97,7 @@ public class IndexController {
                 .findAny();
 
         if (optionalUtilisateur.isPresent()) {
-            model.addAttribute("mailExiste", "Une compte existe déjà avec cette adresse" );
+            model.addAttribute("mailExiste", "Une compte existe déjà avec cette adresse");
         }
 
         if (!utilisateurBinding.hasErrors() && optionalUtilisateur.isEmpty()) {

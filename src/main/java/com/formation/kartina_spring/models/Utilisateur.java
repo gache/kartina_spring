@@ -42,7 +42,7 @@ public class Utilisateur {
     private String telephone;
 
     @Transient
-    @Pattern(regexp = "^.{6,32}$", flags = {Pattern.Flag.CASE_INSENSITIVE, Pattern.Flag.DOTALL})
+    @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{6,32}$", flags = {Pattern.Flag.CASE_INSENSITIVE, Pattern.Flag.DOTALL})
     private String password;
 
     @Column(length = 150, nullable = false)
