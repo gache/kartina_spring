@@ -82,22 +82,24 @@ public class IndexController {
     ) {
 
         RoleUtilisateur roleUtilisateur;
-        if (utilisateurService.findAll().isEmpty()){
+        if (utilisateurService.findAll().isEmpty()) {
             roleUtilisateur = RoleUtilisateur.ADMIN;
-        }else{
+        } else {
             roleUtilisateur = RoleUtilisateur.UTILISATEUR;
         }
         Optional<Utilisateur> optionalUtilisateur = utilisateurService.findByEmail(utilisateur.getEmail());
         Optional<UserType> userType = userTypeService.findAll()
                 .stream()
                 .filter(
-                        ut-> ut.getUserEnum().equals(roleUtilisateur)
+                        ut -> ut.getUserEnum().equals(roleUtilisateur)
                 )
                 .findAny();
-        if (!utilisateurBinding.hasErrors() && optionalUtilisateur.isEmpty()) {
 
-            // TODO : vérifier si dans la base l'email de l'utilisateur existe déjà avant de
-            //      chiffré le mot de passe
+        if (optionalUtilisateur.isPresent()) {
+            model.addAttribute("mailExiste", "Une compte existe déjà avec cette adresse" );
+        }
+
+        if (!utilisateurBinding.hasErrors() && optionalUtilisateur.isEmpty()) {
 
             MotPassCodifier mdpCodifier = new MotPassCodifier();
 
@@ -112,6 +114,8 @@ public class IndexController {
             utilisateurService.save(utilisateur);
             return "redirect:/";
         }
+
+
         //utilisateurBinding.reject("utilisateur.email",  "test error email");
 
         model.addAttribute("fragment", "inscription");

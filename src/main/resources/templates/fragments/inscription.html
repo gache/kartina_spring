@@ -1,5 +1,5 @@
 <section xmlns:th="http://www.thymeleaf.org">
-    <form class="container" th:action="@{/inscription}" method="POST" >
+    <form class="container" th:action="@{/inscription}" method="POST">
         <div class="titre">
             <h1>Inscription</h1>
         </div>
@@ -14,28 +14,27 @@
             <div class="inputChamp">
                 <label>Nom*</label>
                 <input type="text" th:field="*{utilisateur.nom}" class="input" placeholder="Nom" required>
-                <div th:if="${#fields.hasErrors('utilisateur.nom')}" th:errors="*{utilisateur.nom}" style="color: red"></div>
+                <div th:if="${#fields.hasErrors('utilisateur.nom')}" th:errors="*{utilisateur.nom}"
+                     style="color: red"></div>
             </div>
             <div class="inputChamp">
                 <label>Prenom*</label>
                 <input type="text" th:field="*{utilisateur.prenom}" class="input" placeholder="Prenom" required>
-                <div th:if="${#fields.hasErrors('utilisateur.prenom')}" th:errors="*{utilisateur.prenom}" style="color: red"></div>
+                <div th:if="${#fields.hasErrors('utilisateur.prenom')}" th:errors="*{utilisateur.prenom}"
+                     style="color: red"></div>
             </div>
             <div class="inputChamp">
                 <label>Email* </label>
                 <input type="text" th:field="*{utilisateur.email}" class="input" required placeholder="Email">
-                <div th:if="${#fields.hasErrors('utilisateur.email')}" th:errors="*{utilisateur.email}" style="color: red"></div>
+                <div th:if="${mailExiste}" th:text="${mailExiste}" style="color: red"></div>
             </div>
             <div class="inputChamp">
                 <label>Mot de passe*</label>
-                <input type="password" th:field="*{utilisateur.password}" class="input" placeholder="Mot de passe" required>
-                <div th:if="${#fields.hasErrors('utilisateur.password')}" th:errors="*{utilisateur.password}" style="color: red"></div>
+                <input type="password" th:field="*{utilisateur.password}" class="input" placeholder="Mot de passe"
+                       required>
+                <div th:if="${#fields.hasErrors('utilisateur.password')}" th:errors="*{utilisateur.password}"
+                     style="color: red"></div>
             </div>
-            <div class="inputChamp">
-                <label>Confirmation mot de passe*</label>
-                <input type="password" class="input" name="mdp2" id="mdp2" placeholder="Confirmation mot de passe">
-            </div>
-
             <div class="inputChamp">
                 <label>Numero téléphone</label>
                 <input type="tel" th:field="*{utilisateur.telephone}" class="input" placeholder="Téléphone">
