@@ -70,7 +70,7 @@ public class IndexController {
     } // Page inscription du formulaire
 
     @GetMapping("/inscription")
-    public String getInscription(Model model) {
+    public String getInscription(Model model, Utilisateur utilisateur) {
         model.addAttribute("fragment", "inscription");
         return "index";
     }
@@ -95,6 +95,10 @@ public class IndexController {
                 )
                 .findAny();
         if (!utilisateurBinding.hasErrors() && optionalUtilisateur.isEmpty()) {
+
+            // TODO : vérifier si dans la base l'email de l'utilisateur existe déjà avant de
+            //      chiffré le mot de passe
+
             MotPassCodifier mdpCodifier = new MotPassCodifier();
 
             byte[] salt = mdpCodifier.genererSalt();
@@ -108,6 +112,7 @@ public class IndexController {
             utilisateurService.save(utilisateur);
             return "redirect:/";
         }
+        //utilisateurBinding.reject("utilisateur.email",  "test error email");
 
         model.addAttribute("fragment", "inscription");
         return "index";
