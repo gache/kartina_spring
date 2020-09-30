@@ -1,6 +1,5 @@
 package com.formation.kartina_spring.controllers;
 
-
 import com.formation.kartina_spring.enums.RoleUtilisateur;
 import com.formation.kartina_spring.models.Adresse;
 import com.formation.kartina_spring.models.UserType;
@@ -8,8 +7,6 @@ import com.formation.kartina_spring.models.Utilisateur;
 import com.formation.kartina_spring.services.UserTypeService;
 import com.formation.kartina_spring.services.UtilisateurService;
 import com.formation.kartina_spring.utils.MotPassCodifier;
-import org.apache.catalina.Role;
-import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -71,16 +68,26 @@ public class IndexController {
     } // Page inscription du formulaire
 
     @GetMapping("/inscription")
-    public String getInscription(Model model, Utilisateur utilisateur) {
+    public String getInscription(Model model, Utilisateur utilisateur, Adresse adresse) {
         model.addAttribute("fragment", "inscription");
         return "index";
     }
 
     @PostMapping("/inscription")
-    public String postInscription(Model model, Adresse adresse,
+    public String postInscription(Model model,
+                                  @Valid @ModelAttribute(name = "adresse") Adresse adresse,
+                                  BindingResult adresseBinding,
                                   @Valid @ModelAttribute(name = "utilisateur") Utilisateur utilisateur,
                                   BindingResult utilisateurBinding
+
     ) {
+
+        UserType ut1 = new UserType();
+        ut1.setUserEnum(RoleUtilisateur.ADMIN);
+        userTypeService.save(ut1);
+        ut1.setUserEnum(null);
+        ut1.setUserEnum(RoleUtilisateur.UTILISATEUR);
+        userTypeService.save(ut1);
 
         RoleUtilisateur roleUtilisateur;
         if (utilisateurService.findAll().isEmpty()) {
@@ -100,7 +107,7 @@ public class IndexController {
             model.addAttribute("mailExiste", "Une compte existe déjà avec cette adresse");
         }
 
-        if (!utilisateurBinding.hasErrors() && optionalUtilisateur.isEmpty()) {
+        if (!utilisateurBinding.hasErrors() && optionalUtilisateur.isEmpty() && !adresseBinding.hasErrors()) {
 
             MotPassCodifier mdpCodifier = new MotPassCodifier();
 
@@ -111,13 +118,10 @@ public class IndexController {
             utilisateur.setPasswordHash(Base64.getEncoder().encodeToString(motpasse));
 
             utilisateur.setRole(userType.orElse(userTypeService.findByRole(RoleUtilisateur.UTILISATEUR)));
-
+            utilisateur.setAdresse(adresse);
             utilisateurService.save(utilisateur);
             return "redirect:/";
         }
-
-
-        //utilisateurBinding.reject("utilisateur.email",  "test error email");
 
         model.addAttribute("fragment", "inscription");
         return "index";

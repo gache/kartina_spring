@@ -1,6 +1,7 @@
 package com.formation.kartina_spring.utils;
 
 
+import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
@@ -18,10 +19,11 @@ public class MotPassCodifier {
         try {
             MessageDigest messageDigest = MessageDigest.getInstance("SHA-512");
             messageDigest.update(salt);
+            return messageDigest.digest(motPasse.getBytes(StandardCharsets.UTF_8));
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
-        return new  byte[0];
+        return new byte[0];
     }
 
 }

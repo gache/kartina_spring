@@ -19,10 +19,9 @@ public class Adresse {
     @Column(length = 10, nullable = false)
     private String num;
 
-    @Column(length = 10, nullable = false)
+    @Column(length = 40, nullable = false)
     private String voie;
 
-    @Column(length = 40)
     private String complementVoie;
 
     @Column(nullable = false)

@@ -23,7 +23,6 @@ public class Utilisateur {
     @Email
     @NotNull
     @NotBlank
-    @Pattern(regexp = "^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\\\.[A-Z]{2,155}$", flags = {Pattern.Flag.CASE_INSENSITIVE, Pattern.Flag.DOTALL})
     private String email;
 
     @Column(length = 10, nullable = false)
@@ -38,14 +37,14 @@ public class Utilisateur {
     private String prenom;
 
     @Column(length = 16, nullable = false)
-    @Pattern(regexp = "\"(0|(\\\\+33)|(0033))[1-9][0-9]{8}\"", flags = {Pattern.Flag.CASE_INSENSITIVE, Pattern.Flag.DOTALL})
+    //@Pattern(regexp = "\"(0|(\\+33)|(0033))[1-9][0-9]{8}\"", flags = {Pattern.Flag.CASE_INSENSITIVE, Pattern.Flag.DOTALL})
     private String telephone;
 
     @Transient
     @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{6,32}$", flags = {Pattern.Flag.CASE_INSENSITIVE, Pattern.Flag.DOTALL})
     private String password;
 
-    @Column(length = 150, nullable = false)
+    @Column(nullable = false)
     private String passwordHash;
 
     @Column(nullable = false)
@@ -56,7 +55,7 @@ public class Utilisateur {
     @JoinColumn(nullable = false) //Il ne peut pas d'user sans role
     private UserType role;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Adresse adresse;
 
     @ManyToOne
