@@ -7,6 +7,9 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,6 +20,9 @@ import java.util.List;
 public class Utilisateur {
 
     @Id
+    @Email
+    @NotNull
+    @NotBlank
     @Column(nullable = false, length = 150)
     private String email;
 
@@ -24,18 +30,22 @@ public class Utilisateur {
     private String civilite;
 
     @Column(nullable = false)
+    @Pattern(regexp = "^[a-z \\-À-ÖØ-öø-ÿ]{2,155}$", flags = {Pattern.Flag.CASE_INSENSITIVE, Pattern.Flag.DOTALL})
     private String nom;
 
     @Column(nullable = false)
+    @Pattern(regexp = "^[a-z \\-À-ÖØ-öø-ÿ]{2,155}$", flags = {Pattern.Flag.CASE_INSENSITIVE, Pattern.Flag.DOTALL})
     private String prenom;
 
     @Column(length = 16, nullable = false)
+    //@Pattern(regexp = "\"(0|(\\+33)|(0033))[1-9][0-9]{8}\"", flags = {Pattern.Flag.CASE_INSENSITIVE, Pattern.Flag.DOTALL})
     private String telephone;
 
     @Transient
+    @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{6,32}$", flags = {Pattern.Flag.CASE_INSENSITIVE, Pattern.Flag.DOTALL})
     private String password;
 
-    @Column(length = 150, nullable = false)
+    @Column(nullable = false)
     private String passwordHash;
 
     @Column(nullable = false)

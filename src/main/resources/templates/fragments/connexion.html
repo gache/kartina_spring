@@ -1,0 +1,30 @@
+<section class="login-form"  xmlns:th="http://www.thymeleaf.org">
+    <form action="" method="POST">
+        <div class="box">
+            <div class="img">
+                <i class="fa fa-user-o fa-4x" aria-hidden="true"></i>
+            </div>
+            <div class="titre">
+                <h2>Connexion</h2>
+            </div>
+            <div class="form-email">
+                <div class="input-box">
+                    <input type="email" name="email" id="email" placeholder="Email*" class="form-control" />
+                    <span><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                </div>
+                <div class="input-box">
+                    <input type="password" name="pwd" id="pwd" placeholder="Mot de passe*" class="form-control" />
+                    <span><i class="fa fa-unlock-alt" aria-hidden="true"></i></span>
+                </div>
+                <div class="bouton">
+                    <button type="submit">Connexion</button>
+                    <a href="#">Mot de passe oublié</a>
+                </div>
+                <div class="inscription">
+                    <button type="submit"> <a th:href="@{/inscription}"> Créer un compte</a> </button>
+                </div>
+            </div>
+        </div>
+
+    </form>
+</section>

@@ -1,0 +1,109 @@
+<section xmlns:th="http://www.thymeleaf.org">
+    <form class="container" th:action="@{/inscription}" method="POST">
+        <div class="titre">
+            <h1>Inscription</h1>
+        </div>
+        <div class="formulaire">
+            <div class="inputChamp">
+                <label>Civilité*</label>
+                <input type="radio" th:field="${utilisateur.civilite}" value="fem">
+                <label class="label" for="fem">Femme</label>
+                <input type="radio" th:field="${utilisateur.civilite}" value="hom">
+                <label class="label" for="hom">Homme</label>
+            </div>
+            <div class="inputChamp">
+                <label>Nom*</label>
+                <input type="text" th:field="${utilisateur.nom}" class="input" placeholder="Nom" required>
+                <div th:if="${#fields.hasErrors('utilisateur.nom')}" th:errors="${utilisateur.nom}"
+                     style="color: red"></div>
+            </div>
+            <div class="inputChamp">
+                <label>Prenom*</label>
+                <input type="text" th:field="${utilisateur.prenom}" class="input" placeholder="Prenom" required>
+                <div th:if="${#fields.hasErrors('utilisateur.prenom')}" th:errors="${utilisateur.prenom}"
+                     style="color: red"></div>
+            </div>
+            <div class="inputChamp">
+                <label>Email* </label>
+                <input type="text" th:field="${utilisateur.email}" class="input" required placeholder="Email">
+                <div th:if="${#fields.hasErrors('utilisateur.email')}" th:errors="${utilisateur.email}"
+                     style="color: red"></div>
+                <div th:if="${mailExiste}" th:text="${mailExiste}" style="color: red"></div>
+            </div>
+            <div class="inputChamp">
+                <label>Mot de passe*</label>
+                <input type="password" th:field="${utilisateur.password}" class="input" placeholder="Mot de passe"
+                       required>
+                <div th:if="${#fields.hasErrors('utilisateur.password')}" th:errors="${utilisateur.password}"
+                     style="color: red"></div>
+            </div>
+            <div class="inputChamp">
+                <label>Numero téléphone</label>
+                <input type="tel" th:field="${utilisateur.telephone}" class="input" placeholder="Téléphone">
+            </div>
+            <div th:if="${#fields.hasErrors('utilisateur.telephone')}" th:errors="${utilisateur.telephone}"
+                 style="color: red"></div>
+            <div class="inputChamp">
+                <label>Numero</label>
+                <input type="number" th:field="${adresse.num}" min="0" max="100" class="input" placeholder="12">
+            </div>
+            <div th:if="${#fields.hasErrors('adresse.num')}" th:errors="${adresse.num}"
+                 style="color: red">
+            </div>
+            <div class="inputChamp">
+                <label>Voie</label>
+                <select th:field="${adresse.voie}" class="input">
+                    <option value="1">-----</option>
+                    <option value="2">Rue</option>
+                    <option value="3">Avenue</option>
+                    <option value="4">Chemin</option>
+                    <option value="5">Boulevard</option>
+                    <option value="6">Impasse</option>
+                    <option value="7">Route</option>
+                    <option value="8">voie</option>
+                </select>
+            </div>
+            <div th:if="${#fields.hasErrors('adresse.voie')}" th:errors="${adresse.voie}"
+                 style="color: red">
+            </div>
+            <div class="inputChamp">
+                <label>Adresse*</label>
+                <input type="text" th:field="${adresse.complementVoie}" class="input" placeholder="faidherbe">
+            </div>
+            <div th:if="${#fields.hasErrors('adresse.complementVoie')}" th:errors="${adresse.complementVoie}"
+                 style="color: red">
+            </div>
+            <div class="inputChamp">
+                <label> Ville </label>
+                <input type="text" th:field="${adresse.ville}" class="input" placeholder="Lille">
+            </div>
+            <div th:if="${#fields.hasErrors('adresse.ville')}" th:errors="${adresse.ville}"
+                 style="color: red">
+            </div>
+            <div class="inputChamp">
+                <label> Code Postale </label>
+                <input type="text" th:field="${adresse.codePostal}" class="input" placeholder="59800">
+            </div>
+            <div th:if="${#fields.hasErrors('adresse.codePostal')}" th:errors="${adresse.codePostal}"
+                 style="color: red">
+            </div>
+            <div class="inputChamp">
+                <label> Pays </label>
+                <input type="text" th:field="${adresse.pays}" class="input" placeholder="France">
+            </div>
+            <div th:if="${#fields.hasErrors('adresse.pays')}" th:errors="${adresse.pays}"
+                 style="color: red">
+            </div>
+            <div class="inputChamp terme">
+                <label class="check">
+                    <input type="checkbox" name="check" id="condition">
+                    <span class="verification"></span>
+                </label>
+                <p>j'accepte les conditions générales</p>
+            </div>
+            <div class="inputChamp">
+                <button type="submit" value="Valider" class="btn"> Valider</button>
+            </div>
+        </div>
+    </form>
+</section>
