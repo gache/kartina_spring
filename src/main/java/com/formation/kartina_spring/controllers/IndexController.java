@@ -63,6 +63,7 @@ public class IndexController {
 
 
     // Page inscription du formulaire
+
     @GetMapping("/inscription")
     public String getInscription(Model model, Utilisateur utilisateur, Adresse adresse) {
         model.addAttribute("fragment", "inscription");
@@ -124,14 +125,14 @@ public class IndexController {
     }
 
     // Page connexion du formulaire
-    @GetMapping("/connexion")
-    public String getConnexion(Model model) {
-        model.addAttribute("fragment", "connexion");
+    @GetMapping("/login")
+    public String  getLogin(Model model, Utilisateur utilisateur){
+        model.addAttribute("fragment", "login");
         return "index";
     }
 
 
-    @PostMapping("/connexion")
+    @PostMapping("/login")
     public String  PostLogin(Model model,
                              @Valid @ModelAttribute(name = "utilisateur") Utilisateur utilisateur,
                              BindingResult utilisateurBinding,
@@ -153,7 +154,7 @@ public class IndexController {
             model.addAttribute("errorCompte", "Email ou le mdp incorrect");
         }
 
-        model.addAttribute("fragment", "connexion");
+        model.addAttribute("fragment", "login");
         return "index";
 
     }

@@ -1,2 +1,36 @@
-<h1>Bienvenue Login</h1>
+<section class="login-form"  xmlns:th="http://www.thymeleaf.org">
+    <form th:action="@{/login}" method="POST" th:object="${utilisateur}">
+        <div class="box">
+            <div class="img">
+                <i class="fa fa-user-o fa-4x" aria-hidden="true"></i>
+            </div>
+            <div class="titre">
+                <h2>Connexion</h2>
+            </div>
+            <div class="form-email">
+                <div class="input-box">
+                    <input type="email" th:field="*{email}" placeholder="Email*" class="form-control" />
+                    <span><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                    <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
+                         style="color: red"></div>
+                </div>
+                <div class="input-box">
+                    <input type="password" th:field="*{password}" placeholder="Mot de passe*" class="form-control" />
+                    <span><i class="fa fa-unlock-alt" aria-hidden="true"></i></span>
+                    <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
+                         style="color: red"></div>
+                </div>
+                <div class="bouton">
+                    <button type="submit" th:href="@{/login}">Connexion</button>
+                    <a href="#">Mot de passe oublié</a>
+                </div>
+                <div class="inscription">
+                    <button type="submit"> <a th:href="@{/inscription}"> Créer un compte</a> </button>
+                </div>
+                <div th:if="${errorCompte}" th:text="${errorCompte}" style="color: red"></div>
+            </div>
+        </div>
+
+    </form>
+</section>
 
