@@ -159,6 +159,13 @@ public class IndexController {
 
     }
 
+    // Page d'aide
+    @GetMapping("/aide")
+    public  String aide(Model model){
+        model.addAttribute("fragment", "pageAide");
+        return "index";
+    }
+
 
     @GetMapping("/remplissage")
     public String remplissage(){

@@ -847,6 +847,173 @@ section#parcours_achat section#partie_droite section#bloc_personnalisation form 
 section#parcours_achat section#partie_droite section#bloc_personnalisation form table tbody tr.aligne_centre td button[disabled] {
     background-color: #94c5fd;
 }
+/* Page d'aide */
+
+.titrePage {
+    text-align: center;
+}
+
+.paragraphe {
+    text-align: justify;
+    font-size: 1.5em;
+    margin-top: 30px;
+}
+.pageAide {
+    max-width: 500px;
+    width: 100%;
+    background: #fff;
+    margin: 20px auto;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.125);
+    padding: 30px;
+}
+
+.pageAide .titreAide {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 25px;
+    color: #fe0707;
+    text-transform: uppercase;
+    text-align: center;
+    margin: 10px 0px 20px;
+    border-bottom: 1px solid;
+    padding-bottom: 3px;
+}
+
+.pageAide .formulaireAide {
+    width: 100%;
+    margin-top: 30px;
+}
+
+.pageAide .formulaireAide .inputChampAide {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.pageAide .formulaireAide .inputChampAide label {
+    width: 200px;
+    color: #757575;
+    margin-right: 10px;
+    font-size: 14px;
+    text-align: justify;
+}
+.pageAide .formulaireAide .inputChampAide .label {
+    width: 200px;
+    color: #757575;
+    margin-right: 10px;
+    font-size: 14px;
+    text-align: center;
+}
+
+.pageAide .formulaireAide .inputChampAide .input,
+.pageAide .formulaireAide .inputChampAide .textarea {
+    width: 100%;
+    outline: none;
+    border: 1px solid #d5dbd9;
+    font-size: 15px;
+    padding: 8px 10px;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.pageAide .formulaireAide .inputChampAide .textarea {
+    width: 100%;
+    height: 125px;
+    resize: none;
+}
+
+.pageAide .formulaireAide .count {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.pageAide .formulaireAide .inputChampAide .check {
+    width: 15px;
+    height: 15px;
+    position: relative;
+    display: block;
+    cursor: pointer;
+}
+.pageAide .formulaireAide .inputChampAide .check input[type="checkbox"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
+.pageAide .formulaireAide .inputChampAide .check .verification {
+    width: 15px;
+    height: 15px;
+    border: 1px solid #fe0707;
+    display: block;
+    position: relative;
+}
+.pageAide .formulaireAide .inputChampAide .check .verification:before {
+    content: "";
+    position: absolute;
+    top: 1px;
+    left: 2px;
+    width: 5px;
+    height: 2px;
+    border: 2px solid;
+    border-color: transparent transparent #fff #fff;
+    transform: rotate(-45deg);
+    display: none;
+}
+.pageAide
+.formulaireAide
+.inputChampAide
+.check
+input[type="checkbox"]:checked
+~ .verification {
+    background: #fe0707;
+}
+
+.pageAide
+.formulaireAide
+.inputChampAide
+.check
+input[type="checkbox"]:checked
+~ .verification:before {
+    display: block;
+}
+
+.pageAide .formulaireAide .inputChampAide .btn {
+    width: 100%;
+    padding: 8px 10px;
+    font-size: 15px;
+    border: 0px;
+    background: #fe0707;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 3px;
+    outline: none;
+    margin: 30px;
+}
+
+.pageAide .formulaireAide .inputChampAide .btn:hover {
+    background: #ffd658;
+}
+
+.pageAide .formulaireAide .inputChampAide:last-child {
+    margin-bottom: 0;
+}
+
+@media (max-width: 320px) {
+    .pageAide .formulaireAide .inputChampAide {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .pageAide .formulaireAide .inputChampAide label {
+        margin-bottom: 5px;
+    }
+    .pageAide .formulaireAide .inputChampAide.terme {
+        flex-direction: row;
+    }
+}
+
+
 
 /****Formulaire de connexion ****/
 
