@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.Base64;
 import java.util.Optional;
@@ -59,20 +60,9 @@ public class IndexController {
         return "index";
     }
 
-    // Page connexion du formulaire
-    @GetMapping("/connexion")
-    public String getConnexion(Model model) {
-        model.addAttribute("fragment", "connexion");
-        return "index";
-    }
-
-    @PostMapping("/connexion")
-    public String postConnexion(Model model) {
-        model.addAttribute("fragment", "connexion");
-        return "index";
 
 
-    } // Page inscription du formulaire
+    // Page inscription du formulaire
 
     @GetMapping("/inscription")
     public String getInscription(Model model, Utilisateur utilisateur, Adresse adresse) {
@@ -134,6 +124,40 @@ public class IndexController {
         return "index";
     }
 
+    // Page connexion du formulaire
+    @GetMapping("/login")
+    public String  getLogin(Model model, Utilisateur utilisateur){
+        model.addAttribute("fragment", "login");
+        return "index";
+    }
+
+
+    @PostMapping("/login")
+    public String  PostLogin(Model model,
+                             @Valid @ModelAttribute(name = "utilisateur") Utilisateur utilisateur,
+                             BindingResult utilisateurBinding,
+                             HttpSession session
+
+    ) {
+        if(!utilisateurBinding.hasErrors()){
+            Optional<Utilisateur> utilisateur1 = utilisateurService.findByEmail(utilisateur.getEmail());
+
+            if (utilisateur1.isPresent()) {
+                MotPassCodifier mdpCodifier = new MotPassCodifier();
+                byte[] h = mdpCodifier.genererMotPasse(utilisateur.getPassword(), Base64.getDecoder().decode(utilisateur1.get().getSalt()));
+                if (Base64.getEncoder().encodeToString(h).equals(utilisateur1.get().getPasswordHash())){
+                    session.setAttribute("utilisateur", utilisateur1.get());
+                    return "redirect:/";
+                }
+            }
+
+            model.addAttribute("errorCompte", "Email ou le mdp incorrect");
+        }
+
+        model.addAttribute("fragment", "login");
+        return "index";
+
+    }
 
 
     @GetMapping("/remplissage")
